@@ -34,15 +34,28 @@ def entry(request, input):
 def search(request):
     if request.method == "POST":
         data = request.POST["entry_asked"]
-        if data in util.list_entries():
+        if util.get_entry(data):
             return render(request, "encyclopedia/entry.html", {
                 "output": md_to_html(util.get_entry(data)),
                 "title": data.upper()
             })
+        else:
+            possible_entries= [entry for entry in util.list_entries() if data in entry]
+            if possible_entries:
+                return render(request, "encyclopedia/index.html", {
+                    "entries": possible_entries
+                })
+            else:
+                return render(request, "encyclopedia/error.html", {
+                    "title": data
+                })
+           
 
 
 
+        #any(data in entry for data in util.list_entries())
 
-        # validation = util.get_entry(request.POST)
-        # if validation.is_valid():
-        #     print("valid")
+        #for entry in util.list_entries():                                 
+            #if data in entry:                                  
+                #------
+    
