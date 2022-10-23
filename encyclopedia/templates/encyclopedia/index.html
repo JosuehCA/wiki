@@ -6,11 +6,9 @@
 
 {% block body %}
     <h1>All Pages</h1>
-
-    <ul>
+    <ul id="test">
         {% for entry in entries %}
-            <li>{{ entry }}</li>
+            <a href="{{entry}}"><li>{{ entry }}</li></a>
         {% endfor %}
     </ul>
-
 {% endblock %}

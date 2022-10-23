@@ -42,4 +42,14 @@ textarea {
 }
 #error_body div {
   margin-left: 20px;
+}
+
+#test {
+  display: inline-block;
+}
+#test a {
+  color: black;
+}
+#test a:hover {
+  color: #007bff;
 }/*# sourceMappingURL=styles.css.map */

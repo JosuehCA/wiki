@@ -14,7 +14,9 @@ def error(request):
 
 def entry(request, input):
     if not util.get_entry(input):
-        return render(request, "encyclopedia/error.html")
+        return render(request, "encyclopedia/error.html", {
+            "title": input
+        })
     else:
         return render(request, "encyclopedia/entry.html", {
         "output": markdown2.markdown(util.get_entry(input)),
