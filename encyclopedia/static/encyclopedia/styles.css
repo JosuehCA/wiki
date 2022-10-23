@@ -44,12 +44,12 @@ textarea {
   margin-left: 20px;
 }
 
-#test {
+#items {
   display: inline-block;
 }
-#test a {
+#items a {
   color: black;
 }
-#test a:hover {
+#items a:hover {
   color: #007bff;
 }/*# sourceMappingURL=styles.css.map */
