@@ -40,7 +40,7 @@ def search(request):
                 "title": data.upper()
             })
         else:
-            possible_entries= [entry for entry in util.list_entries() if data in entry]
+            possible_entries= [entry for entry in util.list_entries() if data.upper() in entry.upper()]
             if possible_entries:
                 return render(request, "encyclopedia/index.html", {
                     "entries": possible_entries
