@@ -27,7 +27,7 @@ def entry(request, input):
         })
     else:
         return render(request, "encyclopedia/entry.html", {
-        "output": md_to_html(util.get_entry(input)),
+        "output": md_to_html(util.get_entry(input)),    
         "title": input.upper()
     })
     
@@ -50,7 +50,8 @@ def search(request):
                     "title": data
                 })
            
-
+def NewEntry(request):
+    return render(request, "encyclopedia/new.html")
 
 
         #any(data in entry for data in util.list_entries())
