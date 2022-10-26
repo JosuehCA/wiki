@@ -57,7 +57,9 @@ def SaveEntry(request):
     if request.method == "POST":
         NewTitle = request.POST["NewTitle"]
         if util.get_entry(NewTitle):
-            return render(request, "encyclopedia/error.html")  # Missing right output
+            return render(request, "encyclopedia/duplicate.html", {
+                "title": NewTitle
+            })  
         else:
             NewContent = request.POST["NewContent"]
             util.save_entry(NewTitle, NewContent)
