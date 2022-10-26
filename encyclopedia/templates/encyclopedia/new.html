@@ -3,3 +3,14 @@
 {% block title %}
     New entry
 {% endblock %}
+
+{% block body %}
+<form action="{% url 'save' %}" id="Textarea_form" method="POST">
+    {% csrf_token %}
+    <div><label>Insert title:</label><input type="text" name="NewTitle"></div>
+    <p>Insert new content in Markdown format:</p>
+    <textarea name="NewContent"></textarea> 
+    <input type="submit">
+</form>
+
+{% endblock %}

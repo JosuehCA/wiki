@@ -12,9 +12,25 @@ h1 {
   padding-top: 20px;
 }
 
-textarea {
-  height: 90vh;
-  width: 80%;
+#Textarea_form label, #Textarea_form p {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+#Textarea_form label:hover {
+  cursor: text;
+}
+#Textarea_form input {
+  width: 20%;
+  margin-left: 10px;
+}
+#Textarea_form textarea {
+  height: 50vh;
+  width: 50%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#Textarea_form div {
+  margin-bottom: 1%;
 }
 
 .main {

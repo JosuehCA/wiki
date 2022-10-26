@@ -12,10 +12,43 @@ h1 {
     padding-top: 20px;
 }
 
-textarea {
-    height: 90vh;
-    width: 80%;
+#Textarea_form {
+
+    label, p {
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    label:hover {
+        cursor: text;
+    }
+
+    input {
+        width: 20%;
+        margin-left: 10px;
+    }
+
+    textarea {
+        height: 50vh;  // vh equals viewport height
+        width: 50%;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+     div {
+        margin-bottom: 1%;
+     }
 }
+
+// textarea {
+//     height: 50vh;  // vh equals viewport height
+//     width: 50%;
+//     margin-top: 10px;
+// }
+
+// #textarea_title {
+//     width: 20%;
+// }
 
 .main {
     padding: 10px;
@@ -56,3 +89,4 @@ textarea {
         color: #007bff;
     }
 }
+

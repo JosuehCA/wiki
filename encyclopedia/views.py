@@ -53,6 +53,15 @@ def search(request):
 def NewEntry(request):
     return render(request, "encyclopedia/new.html")
 
+def SaveEntry(request):
+    if request.method == "POST":
+        NewTitle = request.POST["NewTitle"]
+        NewContent = md_to_html(request.POST["NewContent"])
+        util.save_entry(NewTitle, NewContent)
+        return render(request, "encyclopedia/entry.html", {
+            "output": NewContent,
+            "title": NewTitle
+        })
 
         #any(data in entry for data in util.list_entries())
 
