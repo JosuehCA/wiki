@@ -56,12 +56,15 @@ def NewEntry(request):
 def SaveEntry(request):
     if request.method == "POST":
         NewTitle = request.POST["NewTitle"]
-        NewContent = md_to_html(request.POST["NewContent"])
-        util.save_entry(NewTitle, NewContent)
-        return render(request, "encyclopedia/entry.html", {
-            "output": NewContent,
+        if util.get_entry(NewTitle):
+            return render(request, "encyclopedia/error.html")  # Missing right output
+        else:
+            NewContent = request.POST["NewContent"]
+            util.save_entry(NewTitle, NewContent)
+            return render(request, "encyclopedia/entry.html", {
+            "output": md_to_html(NewContent),
             "title": NewTitle
-        })
+             })
 
         #any(data in entry for data in util.list_entries())
 
