@@ -1,23 +1,26 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Not found!
+
+{% if empty_string %}
+    Under construction...
+{% elif entry_notfound %}
+    Not found!                     <!-- There's 3 different error, depending on which one is called base on the context given by some function -->
+{% elif duplicate %} 
+    Entry already registered!
+{% endif %}
 {% endblock %}
 
 {% block body %}
+{% if empty_string %}
+    <h1>We are sorry, but ther'es nothing going on around here</h1>
+    <h2>Feel free to use the panel on the left to navigate!</h2>
+{% elif entry_notfound %}
     <div>
-        <h1>We're sorry, but there's nothing going on around here...</h1>
         <h1>We could not find "{{title}}" in our database </h1>
         <h2>Did you make sure to type in your entry correctly?</h2>
     </div>
+{% elif duplicate %}
+    <h1>It seems like there's an entry with the name "{{title}}" already stored in our database</h1>
+{% endif %}
 {% endblock %}
-
-
-
-    <!-- <body id="error_body">
-        <div>
-            <h1>We're sorry, but there's nothing going on around here...</h1>
-            <h1>We could not find "{{title}}"" in our database </h1>
-            <h2>Did you make sure to type in your entry correctly?</h2>
-        </div>
-    </body> -->

@@ -18,12 +18,15 @@ def index(request):
     })
 
 def error(request):
-    return render(request, "encyclopedia/error.html")
+    return render(request, "encyclopedia/error.html", {
+        "empty_string": True
+    })
 
 def entry(request, input):
     if not util.get_entry(input):
         return render(request, "encyclopedia/error.html", {
-            "title": input
+            "title": input,
+            "entry_notfound": True
         })
     else:
         return render(request, "encyclopedia/entry.html", {
@@ -47,7 +50,8 @@ def search(request):
                 })
             else:
                 return render(request, "encyclopedia/error.html", {
-                    "title": data
+                    "title": data,
+                    "entry_notfound": True
                 })
            
 def NewEntry(request):
@@ -57,8 +61,9 @@ def SaveEntry(request):
     if request.method == "POST":
         NewTitle = request.POST["NewTitle"]
         if util.get_entry(NewTitle):
-            return render(request, "encyclopedia/duplicate.html", {
-                "title": NewTitle
+            return render(request, "encyclopedia/error.html", {
+                "title": NewTitle,
+                "duplicate": True
             })  
         else:
             NewContent = request.POST["NewContent"]
@@ -68,9 +73,12 @@ def SaveEntry(request):
             "title": NewTitle
              })
 
-        #any(data in entry for data in util.list_entries())
+def edit(request):
+    return render(request, "encyclopedia/new.html")
 
-        #for entry in util.list_entries():                                 
-            #if data in entry:                                  
-                #------
+#any(data in entry for data in util.list_entries())
+
+#for entry in util.list_entries():                                 
+#if data in entry:                                  
+#------
     

@@ -6,4 +6,9 @@
 
 {% block body %}
     {{output|safe}}
+    <div>
+        <form action=" {% url 'edit' %} ">
+            <input type="submit" value="Edit entry" id="">
+        </form>
+    </div>
 {% endblock %}
