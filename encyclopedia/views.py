@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseServerError
 from django import forms
 import markdown2
+import random as rand
 
 from . import util
 import encyclopedia
@@ -70,7 +71,7 @@ def SaveEntry(request):
         else:                                                     # If we are not editing:     
             if util.get_entry(NewTitle):                                        # We check if the entry already exists, and if it does
                 return render(request, "encyclopedia/error.html", {
-                    "title": NewTitle,                                          #It renders an error page, alongside the duplicate key word to know which
+                    "title": NewTitle,                                          # It renders an error page, alongside the duplicate key word to know which
                     "duplicate": True                                           # error to load
                 })  
             else:                                                               # If it does not exist:
@@ -89,7 +90,12 @@ def edit(request):
             "edit_check": True
         })
 
-
+def random(request):
+    random_choice = rand.choice(util.list_entries())
+    return render(request, "encyclopedia/entry.html", {
+        "output": md_to_html(util.get_entry(random_choice)),
+        "title": random_choice
+    })
 #any(data in entry for data in util.list_entries())
 
 #for entry in util.list_entries():                                 
