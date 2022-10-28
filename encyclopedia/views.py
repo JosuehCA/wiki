@@ -31,7 +31,7 @@ def entry(request, input):
     else:
         return render(request, "encyclopedia/entry.html", {
         "output": md_to_html(util.get_entry(input)),    
-        "title": input.upper()
+        "title": input
     })
     
 def search(request):
@@ -60,28 +60,36 @@ def NewEntry(request):
 def SaveEntry(request):
     if request.method == "POST":
         NewTitle = request.POST["NewTitle"]
-        if util.get_entry(NewTitle):
-            return render(request, "encyclopedia/error.html", {
-                "title": NewTitle,
-                "duplicate": True
-            })  
-        else:
-            NewContent = request.POST["NewContent"]
+        NewContent = request.POST["NewContent"]
+        if request.POST["edit_check"]:
             util.save_entry(NewTitle, NewContent)
-            return render(request, "encyclopedia/entry.html", {
-            "output": md_to_html(NewContent),
-            "title": NewTitle
-             })
+            return render(request, "encyclopedia/entry.html", {       # If we are editing, we let the util function replace the exiting one
+                "output": md_to_html(NewContent),
+                "title": NewTitle
+            })
+        else:                                                     # If we are not editing:     
+            if util.get_entry(NewTitle):                                        # We check if the entry already exists, and if it does
+                return render(request, "encyclopedia/error.html", {
+                    "title": NewTitle,                                          #It renders an error page, alongside the duplicate key word to know which
+                    "duplicate": True                                           # error to load
+                })  
+            else:                                                               # If it does not exist:
+                util.save_entry(NewTitle, NewContent)                               # We save the file normally
+                return render(request, "encyclopedia/entry.html", {
+                "output": md_to_html(NewContent),
+                "title": NewTitle
+                })
 
 def edit(request):
     if request.method == "POST":
         title = request.POST["title"]
         return render(request, "encyclopedia/new.html", {
             "title": title,
-            "content": util.get_entry(title)
+            "content": util.get_entry(title),
+            "edit_check": True
         })
 
-        
+
 #any(data in entry for data in util.list_entries())
 
 #for entry in util.list_entries():                                 
