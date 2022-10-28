@@ -74,8 +74,14 @@ def SaveEntry(request):
              })
 
 def edit(request):
-    return render(request, "encyclopedia/new.html")
+    if request.method == "POST":
+        title = request.POST["title"]
+        return render(request, "encyclopedia/new.html", {
+            "title": title,
+            "content": util.get_entry(title)
+        })
 
+        
 #any(data in entry for data in util.list_entries())
 
 #for entry in util.list_entries():                                 

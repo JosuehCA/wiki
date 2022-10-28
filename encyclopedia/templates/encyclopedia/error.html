@@ -1,11 +1,10 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-
 {% if empty_string %}
     Under construction...
 {% elif entry_notfound %}
-    Not found!                     <!-- There's 3 different error, depending on which one is called base on the context given by some function -->
+    Not found!                     <!-- There's 3 different errors, depending on which one's called based on the context given by some function -->
 {% elif duplicate %} 
     Entry already registered!
 {% endif %}
@@ -13,7 +12,7 @@
 
 {% block body %}
 {% if empty_string %}
-    <h1>We are sorry, but ther'es nothing going on around here</h1>
+    <h1>We are sorry, but there's nothing going on around here</h1>
     <h2>Feel free to use the panel on the left to navigate!</h2>
 {% elif entry_notfound %}
     <div>

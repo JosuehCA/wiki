@@ -7,8 +7,10 @@
 {% block body %}
     {{output|safe}}
     <div>
-        <form action=" {% url 'edit' %} ">
-            <input type="submit" value="Edit entry" id="">
+        <form action="{% url 'edit' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Edit entry">
+            <input type="hidden" value="{{title}}" name="title">
         </form>
     </div>
 {% endblock %}

@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block body %}
-<form action="{% url 'save' %}" id="Textarea_form" method="POST">
+<form action="{% url 'save' %}" class="Textarea_form" method="POST">
     {% csrf_token %}
-    <div><label>Insert title:</label><input type="text" name="NewTitle"></div>
+    <div><label>Insert title:</label><input type="text" value="{{title}}" name="NewTitle"></div>
     <p>Insert new content in Markdown format:</p>
-    <textarea name="NewContent"></textarea> 
+    <textarea name="NewContent">{{content}}</textarea> 
     <input type="submit">
 </form>
 
