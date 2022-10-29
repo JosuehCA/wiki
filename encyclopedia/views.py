@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseServerError
 from django import forms
 import markdown2
-import random as rand
+import random as rand  #Had to change the name because it collided with my own function
 
 from . import util
 import encyclopedia
