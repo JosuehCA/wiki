@@ -9,7 +9,7 @@
     <div>
         <form action="{% url 'edit' %}" method="POST">
             {% csrf_token %}
-            <input type="submit" value="Edit entry">
+            <input type="submit" value="Edit entry" class="submit_button">
             <input type="hidden" value="{{title}}" name="title">
         </form>
     </div>

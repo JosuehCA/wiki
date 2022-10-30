@@ -75,4 +75,15 @@ h1 {
   color: #007bff;
 }
 
+.submit_button {
+  background-color: lightblue;
+  outline: none;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.submit_button:hover {
+  border: 0.5px solid;
+}
+
 /*# sourceMappingURL=styles.css.map */
