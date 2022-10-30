@@ -47,7 +47,8 @@ def search(request):
             possible_entries= [entry for entry in util.list_entries() if data.upper() in entry.upper()]
             if possible_entries:
                 return render(request, "encyclopedia/index.html", {
-                    "entries": possible_entries
+                    "entries": possible_entries,
+                    "search_check": True
                 })
             else:
                 return render(request, "encyclopedia/error.html", {

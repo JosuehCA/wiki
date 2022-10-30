@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block body %}
+    {% if search_check %}
+    <h1>Possible entries:</h1>
+    {% else %}
     <h1>All Pages</h1>
+    {% endif %}
+
     <ul id="items">
         {% for entry in entries %}
             <a href="/wiki/{{entry}}"><li>{{ entry }}</li></a>

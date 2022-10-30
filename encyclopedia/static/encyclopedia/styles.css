@@ -35,18 +35,23 @@ h1 {
 
 .main {
   padding: 10px;
+  font-family: sans-serif;
+  font-size: 20px;
 }
 
 .search {
   width: 100%;
   font-size: 15px;
   line-height: 15px;
+  border-radius: 4px;
+  outline: 1px;
 }
 
 .sidebar {
   background-color: #f0f0f0;
   height: 100vh;
   padding: 20px;
+  font-family: sans-serif;
 }
 
 .sidebar h2 {
@@ -68,4 +73,6 @@ h1 {
 }
 #items a:hover {
   color: #007bff;
-}/*# sourceMappingURL=styles.css.map */
+}
+
+/*# sourceMappingURL=styles.css.map */
