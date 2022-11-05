@@ -1,14 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseServerError
-from django import forms
 import markdown2
 import random as rand  #Had to change the name because it collided with my own function
 
 from . import util
 import encyclopedia
 
-#  class Search_Encyclopedia(forms.Form):
-#      query = forms.CharField()
 
 def md_to_html(mdcontent):
     return markdown2.markdown(mdcontent)
@@ -65,7 +62,7 @@ def SaveEntry(request):
         NewContent = request.POST["NewContent"]
         if request.POST["edit_check"]:
             util.save_entry(NewTitle, NewContent)
-            return render(request, "encyclopedia/entry.html", {       # If we are editing, we let the util function replace the exiting one
+            return render(request, "encyclopedia/entry.html", {       # If we are editing, we let the util function replace the existing one
                 "output": md_to_html(NewContent),
                 "title": NewTitle
             })
